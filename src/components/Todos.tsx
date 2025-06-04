@@ -57,20 +57,31 @@ const completedTodos = todos
   );
 
 return (
-  <div>
-    <h1>Todo of today</h1>
+  <div className="min-h-screen bg-gray-100 p-4 text-gray-900">
+    <h1 className="text-3xl font-bold text-center mb-6">Let's crush today’s tasks! 💪</h1>
 
-    <button onClick={() => setSortAsc((prev) => !prev)}>
-      Sort: {sortAsc ? "Z–A" : "A–Z"}
-    </button>
+    <div className="mb-6 text-center">
+      <button
+        onClick={() => setSortAsc((prev) => !prev)}
+        className="px-4 py-2 bg-blue-950 text-white rounded hover:bg-blue-800 transition"
+      >
+        Sort: {sortAsc ? "Z–A" : "A–Z"}
+      </button>
+    </div>
 
     <Form onAddTodo={addTodo} />
 
-    <h2>📝 Let’s go and have fun!</h2>
-    <TodoList todos={incompleteTodos} onToggleDone={toggleDone} />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <div className="bg-white p-4 rounded shadow">
+        <h2 className="text-xl font-semibold mb-4">📝 Let’s go and have fun!</h2>
+        <TodoList todos={incompleteTodos} onToggleDone={toggleDone} />
+      </div>
 
-    <h2>🎉 You’re awesome, look what you’ve done!</h2>
-    <TodoList todos={completedTodos} onToggleDone={toggleDone} />
+      <div className="bg-white p-4 rounded shadow">
+        <h2 className="text-xl font-semibold mb-4">🎉 You’re awesome, look what you’ve done!</h2>
+        <TodoList todos={completedTodos} onToggleDone={toggleDone} />
+      </div>
+    </div>
   </div>
 );
 }
